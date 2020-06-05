@@ -1,0 +1,41 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 05 Jun 2020 09:35:24 at https://python-small-examples.readthedocs.io/en/latest/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://python-small-examples.readthedocs.io/en/latest/ -O1 "C:\Users\jashliao\Desktop\python-small-examples\WEB\HTML" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+09:39:31	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch01/01_ç®æ´ä¹ç¾.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:31	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch01/02_Pythonç»å¾.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:31	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch01/03_Pythonå¨ç».html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:31	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch01/04_Pythonæ°æ®åæ.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:31	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch01/05_Pythonæºå¨å­¦ä¹ .html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/01_æ±ç»å¯¹å¼.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/02_åç´ é½ä¸ºçå¤æ­.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/03_åç´ è³å°ä¸ä¸ªä¸ºç.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/04_asciiå¯¹è±¡å±ç¤º.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/05_è¿å¶è½¬æ¢.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/06_å¤æ­æ¯çæ¯å.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/07_å­ç¬¦ä¸²è½¬å­è.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/08_è½¬ä¸ºå­ç¬¦ä¸².html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/09_callableå¯è°ç¨å¯¹è±¡.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/10_ååASCIIäºè½¬.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/11_classmethodè£é¥°å¨.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/12_æ§è¡å­ç¬¦ä¸²è¡¨ç¤ºçä»£ç .html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/13_åå»ºå¤æ°.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/14_å¨æå é¤å±æ§.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/15_è½¬ä¸ºå­å¸.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/16_æ¥çå¯¹è±¡ææå±æ§åæ¹æ³.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Bad Request" (400) at link https://python-small-examples.readthedocs.io/en/latest/ch02/17_åååæ±ä½åæ¶å.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:39:32	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch02/18_enumerateæ¹æ³.html (from https://python-small-examples.readthedocs.io/en/latest/)
+09:41:18	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/_static/fonts/RobotoSlab/roboto-slab.eot (from https://python-small-examples.readthedocs.io/en/latest/_static/css/theme.css)
+09:41:18	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch10/data/sort.zip (from https://python-small-examples.readthedocs.io/en/latest/ch10/05.html)
+09:41:18	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch10/ch10/img/1578812306173.png (from https://python-small-examples.readthedocs.io/en/latest/ch10/06.html)
+09:41:18	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch10/ch10/img/1578812432196.png (from https://python-small-examples.readthedocs.io/en/latest/ch10/07.html)
+09:41:18	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch10/ch10/img1578812749903.png (from https://python-small-examples.readthedocs.io/en/latest/ch10/09.html)
+09:41:18	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch10/ch10/imgimage-20200105205845965.png (from https://python-small-examples.readthedocs.io/en/latest/ch10/14.html)
+09:41:18	Error: 	"Not Found" (404) at link https://python-small-examples.readthedocs.io/en/latest/ch12/ch12/img/1.png (from https://python-small-examples.readthedocs.io/en/latest/ch12/04.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 5 minutes 55 seconds : 326 links scanned, 295 files written (26705863 bytes overall) [22591323 bytes received at 63637 bytes/sec], 11470091 bytes transferred using HTTP compression in 240 files, ratio 58%, 46.5 requests per connection
+(30 errors, 0 warnings, 0 messages)

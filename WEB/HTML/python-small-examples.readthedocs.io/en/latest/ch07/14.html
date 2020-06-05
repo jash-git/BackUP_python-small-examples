@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch07/14.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:54 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>14 pyecharts绘制graph图 &mdash; python3-small-examples 1.2.378 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15 pyecharts水球图" href="15.html" />
+    <link rel="prev" title="13 pyecharts日历图" href="13.html" /> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="14.html" />
+
+<link rel="stylesheet" href="../../../../assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "ch07/14"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index-2.html" class="icon icon-home"> python3-small-examples
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://python-small-examples.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p01_intro.html">Python之路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p02_basic.html">一、Python基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p03_reandstr.html">二、Python字符串和正则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p04_file_datetime.html">三、Python文件和日期</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p05_threading.html">四、Python多线程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p06_3sharps.html">五、Python三大利器</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../chapters/p07_plot.html">六、Python绘图</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01.html">1 turtle绘制奥运五环图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html">2 turtle绘制漫天雪花</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html">3 wordcloud词云图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html">4 plotly画柱状图和折线图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.html">5 seaborn热力图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.html">6 matplotlib折线图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07.html">7 matplotlib散点图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.html">8 matplotlib柱状图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09.html">9 matplotlib等高线图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.html">10 imshow图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.html">11 pyecharts绘制仪表盘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.html">12 pyecharts漏斗图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.html">13 pyecharts日历图</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">14 pyecharts绘制graph图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.html">15 pyecharts水球图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.html">16 pyecharts饼图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.html">17 pyecharts极坐标图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.html">18 pyecharts词云图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.html">19 pyecharts系列柱状图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.html">20 pyecharts热力图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21.html">21 matplotlib绘制动画</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p08_keng.html">七、 Python之坑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p09_usefultools.html">八、 Python第三方包</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p10_basicalgAndMachineLearning.html">九、 机器学习和深度学必知算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p11_pandas_data_analysis.html">十、Pandas数据分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p12_practice.html">十一、Python实战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aboutme.html">关于</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index-2.html">python3-small-examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index-2.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../chapters/p07_plot.html">六、Python绘图</a> &raquo;</li>
+        
+      <li>14 pyecharts绘制graph图</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/jackzhenguo/python-small-examples/blob/master/rst/ch07/14.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pyechartsgraph">
+<h1>14 pyecharts绘制graph图<a class="headerlink" href="#pyechartsgraph" title="Permalink to this headline">¶</a></h1>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pyecharts</span> <span class="k">import</span> <span class="n">options</span> <span class="k">as</span> <span class="n">opts</span>
+<span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="k">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Page</span>
+
+<span class="k">def</span> <span class="nf">graph_base</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Graph</span><span class="p">:</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cus1&quot;</span><span class="p">,</span> <span class="s2">&quot;symbolSize&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cus2&quot;</span><span class="p">,</span> <span class="s2">&quot;symbolSize&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cus3&quot;</span><span class="p">,</span> <span class="s2">&quot;symbolSize&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+    <span class="p">]</span>
+    <span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;cus1&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">j</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;cus1&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span> <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">j</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)})</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Graph</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">links</span><span class="p">,</span> <span class="n">repulsion</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span><span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;customer-influence&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>构建图，其中客户点1与其他两个客户都没有关系(<code class="docutils literal notranslate"><span class="pre">link</span></code>)，也就是不存在有效边：</p>
+<div class="figure">
+<img alt="" src="../_images/1578811569529.png" />
+</div>
+<span class="target" id="header-n2179"></span></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="15.html" class="btn btn-neutral float-right" title="15 pyecharts水球图" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="13.html" class="btn btn-neutral float-left" title="13 pyecharts日历图" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Emily Guo
+      
+        <span class="commit">
+          Revision <code>a27be638</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+          <dd><a href="https://python-small-examples.readthedocs.io/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/python-small-examples/?fromdocs=python-small-examples">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/python-small-examples/?fromdocs=python-small-examples">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch07/14.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:55 GMT -->
+</html>

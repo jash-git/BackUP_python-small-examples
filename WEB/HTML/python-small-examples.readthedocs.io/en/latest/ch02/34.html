@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch02/34.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:32 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>34 转为整型 &mdash; python3-small-examples 1.2.378 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="35 isinstance" href="35.html" />
+    <link rel="prev" title="33 获取用户输入" href="33.html" /> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="34.html" />
+
+<link rel="stylesheet" href="../../../../assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "ch02/34"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index-2.html" class="icon icon-home"> python3-small-examples
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://python-small-examples.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p01_intro.html">Python之路</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../chapters/p02_basic.html">一、Python基础</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_%c3%a6%c2%b1%c2%82%c3%a7%c2%bb%c2%9d%c3%a5%c2%af%c2%b9%c3%a5%c2%80%c2%bc.html">1 求绝对值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_%c3%a5%c2%85%c2%83%c3%a7%c2%b4%c2%a0%c3%a9%c2%83%c2%bd%c3%a4%c2%b8%c2%ba%c3%a7%c2%9c%c2%9f%c3%a5%c2%88%c2%a4%c3%a6%c2%96%c2%ad.html">2 元素都为真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_%c3%a5%c2%85%c2%83%c3%a7%c2%b4%c2%a0%c3%a8%c2%87%c2%b3%c3%a5%c2%b0%c2%91%c3%a4%c2%b8%c2%80%c3%a4%c2%b8%c2%aa%c3%a4%c2%b8%c2%ba%c3%a7%c2%9c%c2%9f.html">3 元素至少一个为真</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_ascii%c3%a5%c2%af%c2%b9%c3%a8%c2%b1%c2%a1%c3%a5%c2%b1%c2%95%c3%a7%c2%a4%c2%ba.html">4 ascii展示对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_%c3%a8%c2%bf%c2%9b%c3%a5%c2%88%c2%b6%c3%a8%c2%bd%c2%ac%c3%a6%c2%8d%c2%a2.html">5 十转二</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_%c3%a8%c2%bf%c2%9b%c3%a5%c2%88%c2%b6%c3%a8%c2%bd%c2%ac%c3%a6%c2%8d%c2%a2.html#header-n1329">6 十转八</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_%c3%a8%c2%bf%c2%9b%c3%a5%c2%88%c2%b6%c3%a8%c2%bd%c2%ac%c3%a6%c2%8d%c2%a2.html#header-n1332">7 十转十六</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_%c3%a5%c2%88%c2%a4%c3%a6%c2%96%c2%ad%c3%a6%c2%98%c2%af%c3%a7%c2%9c%c2%9f%c3%a6%c2%98%c2%af%c3%a5%c2%81%c2%87.html">8 判断是真是假</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_%c3%a5%c2%ad%c2%97%c3%a7%c2%ac%c2%a6%c3%a4%c2%b8%c2%b2%c3%a8%c2%bd%c2%ac%c3%a5%c2%ad%c2%97%c3%a8%c2%8a%c2%82.html">9 字符串转字节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_%c3%a8%c2%bd%c2%ac%c3%a4%c2%b8%c2%ba%c3%a5%c2%ad%c2%97%c3%a7%c2%ac%c2%a6%c3%a4%c2%b8%c2%b2.html">10 转为字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_callable%c3%a5%c2%8f%c2%af%c3%a8%c2%b0%c2%83%c3%a7%c2%94%c2%a8%c3%a5%c2%af%c2%b9%c3%a8%c2%b1%c2%a1.html">11 是否可调用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_%c3%a5%c2%8d%c2%81%c3%a5%c2%92%c2%8cASCII%c3%a4%c2%ba%c2%92%c3%a8%c2%bd%c2%ac.html">12 十转ASCII</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_%c3%a5%c2%8d%c2%81%c3%a5%c2%92%c2%8cASCII%c3%a4%c2%ba%c2%92%c3%a8%c2%bd%c2%ac.html#header-n1352">13 ASCII转十</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_classmethod%c3%a8%c2%a3%c2%85%c3%a9%c2%a5%c2%b0%c3%a5%c2%99%c2%a8.html">14 静态方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_%c3%a6%c2%89%c2%a7%c3%a8%c2%a1%c2%8c%c3%a5%c2%ad%c2%97%c3%a7%c2%ac%c2%a6%c3%a4%c2%b8%c2%b2%c3%a8%c2%a1%c2%a8%c3%a7%c2%a4%c2%ba%c3%a7%c2%9a%c2%84%c3%a4%c2%bb%c2%a3%c3%a7%c2%a0%c2%81.html">15 执行字符串表示的代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_%c3%a5%c2%88%c2%9b%c3%a5%c2%bb%c2%ba%c3%a5%c2%a4%c2%8d%c3%a6%c2%95%c2%b0.html">16 创建复数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_%c3%a5%c2%8a%c2%a8%c3%a6%c2%80%c2%81%c3%a5%c2%88%c2%a0%c3%a9%c2%99%c2%a4%c3%a5%c2%b1%c2%9e%c3%a6%c2%80%c2%a7.html">17 动态删除属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15_%c3%a8%c2%bd%c2%ac%c3%a4%c2%b8%c2%ba%c3%a5%c2%ad%c2%97%c3%a5%c2%85%c2%b8.html">18 转为字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_%c3%a6%c2%9f%c2%a5%c3%a7%c2%9c%c2%8b%c3%a5%c2%af%c2%b9%c3%a8%c2%b1%c2%a1%c3%a6%c2%89%c2%80%c3%a6%c2%9c%c2%89%c3%a5%c2%b1%c2%9e%c3%a6%c2%80%c2%a7%c3%a5%c2%92%c2%8c%c3%a6%c2%96%c2%b9%c3%a6%c2%b3%c2%95.html">19 一键查看对象所有方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_%c3%a5%c2%8f%c2%96%c3%a5%c2%95%c2%86%c3%a5%c2%92%c2%8c%c3%a6%c2%b1%c2%82%c3%a4%c2%bd%c2%99%c3%a5%c2%90%c2%8c%c3%a6%c2%97%c2%b6%c3%a5%c2%81%c2%9a.html">20 取商和余数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18_enumerate%c3%a6%c2%96%c2%b9%c3%a6%c2%b3%c2%95.html">21 枚举对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.html">22 计算表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.html">23 查看变量所占字节数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.html">24 过滤器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="25.html">25 转为浮点类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.html">26 字符串格式化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27.html">27 冻结集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="28.html">28 动态获取对象属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="29.html">29 对象是否有这个属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="30.html">30 返回对象的哈希值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="31.html">31 一键帮助</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.html">32 对象门牌号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.html">33 获取用户输入</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">34 转为整型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="35.html">35 isinstance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="36.html">36 父子关系鉴定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="37.html">37 创建迭代器类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="38.html">38 所有对象之根</a></li>
+<li class="toctree-l2"><a class="reference internal" href="39.html">45 打开文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="40.html">40 次幂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41.html">41 打印</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.html">42 创建属性的两种方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.html">43 创建range序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.html">50 反向迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.html">45 四舍五入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.html">46 转为集合类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.html">47 转为切片对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.html">48 拿来就用的排序函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="49.html">49 求和函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="50.html">50 转元组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="51.html">51 查看对象类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="52.html">52 聚合迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="53.html">53 nonlocal用于内嵌函数中</a></li>
+<li class="toctree-l2"><a class="reference internal" href="54.html">54 global 声明全局变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="55.html">55 链式比较</a></li>
+<li class="toctree-l2"><a class="reference internal" href="56.html">56 不用else和if实现计算器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="57.html">57 链式操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="58.html">58 交换两元素</a></li>
+<li class="toctree-l2"><a class="reference internal" href="59.html">59 去最求平均</a></li>
+<li class="toctree-l2"><a class="reference internal" href="60.html">60 打印99乘法表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="61.html">61 全展开</a></li>
+<li class="toctree-l2"><a class="reference internal" href="62.html">62 列表等分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="63.html">63 列表压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="64.html">64 更长列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="65.html">65 求众数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="66.html">66 多表之最</a></li>
+<li class="toctree-l2"><a class="reference internal" href="67.html">67 列表查重</a></li>
+<li class="toctree-l2"><a class="reference internal" href="68.html">68 列表反转</a></li>
+<li class="toctree-l2"><a class="reference internal" href="69.html">69 浮点数等差数列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="70.html">70 按条件分组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="71.html">71 map实现向量运算</a></li>
+<li class="toctree-l2"><a class="reference internal" href="72.html">72 值最大的字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="73.html">73 合并两个字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="74.html">74 topn字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="75.html">75 异位词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="76.html">76 逻辑上合并字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="77.html">77 命名元组提高可读性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="78.html">78 样本抽样</a></li>
+<li class="toctree-l2"><a class="reference internal" href="79.html">79 重洗数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="80.html">80 10个均匀分布的坐标点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="81.html">81 10个高斯分布的坐标点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="82.html">82 chain高效串联多个容器对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="83.html">83 操作函数对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="84.html">84 生成逆序序列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="85.html">85 函数的五类参数使用例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="86.html">86 使用slice对象</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p03_reandstr.html">二、Python字符串和正则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p04_file_datetime.html">三、Python文件和日期</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p05_threading.html">四、Python多线程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p06_3sharps.html">五、Python三大利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p07_plot.html">六、Python绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p08_keng.html">七、 Python之坑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p09_usefultools.html">八、 Python第三方包</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p10_basicalgAndMachineLearning.html">九、 机器学习和深度学必知算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p11_pandas_data_analysis.html">十、Pandas数据分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p12_practice.html">十一、Python实战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aboutme.html">关于</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index-2.html">python3-small-examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index-2.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../chapters/p02_basic.html">一、Python基础</a> &raquo;</li>
+        
+      <li>34 转为整型</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/jackzhenguo/python-small-examples/blob/master/rst/ch02/34.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>34 转为整型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>int(x, base =10) , x可能为字符串或数值，将x
+转换为一个普通整数。如果参数是字符串，那么它可能包含符号和小数点。如果超出了普通整数的表示范围，一个长整数被返回。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;12&#39;</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<span class="target" id="header-n1485"></span></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="35.html" class="btn btn-neutral float-right" title="35 isinstance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="33.html" class="btn btn-neutral float-left" title="33 获取用户输入" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Emily Guo
+      
+        <span class="commit">
+          Revision <code>a27be638</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+          <dd><a href="https://python-small-examples.readthedocs.io/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/python-small-examples/?fromdocs=python-small-examples">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/python-small-examples/?fromdocs=python-small-examples">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch02/34.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:32 GMT -->
+</html>

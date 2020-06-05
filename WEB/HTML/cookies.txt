@@ -1,0 +1,7 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.readthedocs.io	TRUE	/	FALSE	1999999999	__cfduid	d1b9738758b486cc6aefa09ff635439351591320926
+python-small-examples.readthedocs.io	TRUE	/	FALSE	1999999999	SameSite	Lax
+.readthedocs.org	TRUE	/	FALSE	1999999999	__cfduid	da9c4e181a108c39aa27b92fc4e368fdb1591320928
+assets.readthedocs.org	TRUE	/	FALSE	1999999999	SameSite	Lax
+

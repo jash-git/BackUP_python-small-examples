@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch05/01.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:34 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1 默认启动主线程 &mdash; python3-small-examples 1.2.378 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3 交替获得CPU时间片" href="02.html" />
+    <link rel="prev" title="四、Python多线程" href="../chapters/p05_threading.html" /> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="01.html" />
+
+<link rel="stylesheet" href="../../../../assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "ch05/01"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index-2.html" class="icon icon-home"> python3-small-examples
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://python-small-examples.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p01_intro.html">Python之路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p02_basic.html">一、Python基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p03_reandstr.html">二、Python字符串和正则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p04_file_datetime.html">三、Python文件和日期</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../chapters/p05_threading.html">四、Python多线程</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1 默认启动主线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2 创建线程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html">3 交替获得CPU时间片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html">4 多线程抢夺同一个变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html#id2">5 代码稍作改动，叫问题暴露出来</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html">6 加上一把锁，避免以上情况出现</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p06_3sharps.html">五、Python三大利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p07_plot.html">六、Python绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p08_keng.html">七、 Python之坑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p09_usefultools.html">八、 Python第三方包</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p10_basicalgAndMachineLearning.html">九、 机器学习和深度学必知算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p11_pandas_data_analysis.html">十、Pandas数据分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p12_practice.html">十一、Python实战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aboutme.html">关于</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index-2.html">python3-small-examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index-2.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../chapters/p05_threading.html">四、Python多线程</a> &raquo;</li>
+        
+      <li>1 默认启动主线程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/jackzhenguo/python-small-examples/blob/master/rst/ch05/01.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>1 默认启动主线程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>一般的，程序默认执行只在一个线程，这个线程称为主线程，例子演示如下：</p>
+<p>导入线程相关的模块 <code class="docutils literal notranslate"><span class="pre">threading</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+</pre></div>
+</div>
+<p>threading的类方法 <code class="docutils literal notranslate"><span class="pre">current_thread()</span></code>返回当前线程：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="c1"># &lt;_MainThread(MainThread, started 139908235814720)&gt;</span>
+</pre></div>
+</div>
+<p>所以，验证了程序默认是在<code class="docutils literal notranslate"><span class="pre">MainThead</span></code>中执行。</p>
+<p><code class="docutils literal notranslate"><span class="pre">t.getName()</span></code>获得这个线程的名字，其他常用方法，<code class="docutils literal notranslate"><span class="pre">getName()</span></code>获得线程<code class="docutils literal notranslate"><span class="pre">id</span></code>,<code class="docutils literal notranslate"><span class="pre">isAlive()</span></code>判断线程是否存活等。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span> <span class="c1"># MainThread</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">ident</span><span class="p">)</span> <span class="c1"># 139908235814720</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">isAlive</span><span class="p">())</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+<p>以上这些仅是介绍多线程的<code class="docutils literal notranslate"><span class="pre">背景知识</span></code>，因为到目前为止，我们有且仅有一个”干活”的主线程</p>
+</div>
+<div class="section" id="id2">
+<h1>2 创建线程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>创建一个线程：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>创建一个名称为<code class="docutils literal notranslate"><span class="pre">my_thread</span></code>的线程：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_thread&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>创建线程的目的是告诉它帮助我们做些什么，做些什么通过参数<code class="docutils literal notranslate"><span class="pre">target</span></code>传入，参数类型为<code class="docutils literal notranslate"><span class="pre">callable</span></code>，函数就是可调用的：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_i</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;打印i:</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,))</span>
+<span class="n">my_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">print_i</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">my_thread</span></code>线程已经全副武装，但是我们得按下发射按钮，启动start()，它才开始真正起飞。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_thread</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>打印结果如下，其中<code class="docutils literal notranslate"><span class="pre">args</span></code>指定函数<code class="docutils literal notranslate"><span class="pre">print_i</span></code>需要的参数i，类型为元祖。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">打印i</span><span class="p">:</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>至此，多线程相关的核心知识点，已经总结完毕。但是，仅仅知道这些，还不够！光纸上谈兵，当然远远不够。</p>
+<p>接下来，聊聊应用多线程编程，最本质的一些东西。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02.html" class="btn btn-neutral float-right" title="3 交替获得CPU时间片" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../chapters/p05_threading.html" class="btn btn-neutral float-left" title="四、Python多线程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Emily Guo
+      
+        <span class="commit">
+          Revision <code>a27be638</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+          <dd><a href="https://python-small-examples.readthedocs.io/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/python-small-examples/?fromdocs=python-small-examples">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/python-small-examples/?fromdocs=python-small-examples">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch05/01.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:34 GMT -->
+</html>

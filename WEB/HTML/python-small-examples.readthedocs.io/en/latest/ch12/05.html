@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch12/05.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:41:08 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5 制作小而美的计算器 &mdash; python3-small-examples 1.2.378 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="关于" href="../aboutme.html" />
+    <link rel="prev" title="4 爬取天气数据并解析温度值" href="04.html" /> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="05.html" />
+
+<link rel="stylesheet" href="../../../../assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "ch12/05"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index-2.html" class="icon icon-home"> python3-small-examples
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://python-small-examples.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p01_intro.html">Python之路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p02_basic.html">一、Python基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p03_reandstr.html">二、Python字符串和正则</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p04_file_datetime.html">三、Python文件和日期</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p05_threading.html">四、Python多线程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p06_3sharps.html">五、Python三大利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p07_plot.html">六、Python绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p08_keng.html">七、 Python之坑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p09_usefultools.html">八、 Python第三方包</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p10_basicalgAndMachineLearning.html">九、 机器学习和深度学必知算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p11_pandas_data_analysis.html">十、Pandas数据分析</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../chapters/p12_practice.html">十一、Python实战</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01.html">1 环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html">2 自动群发邮件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html">3 二分搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html">4 爬取天气数据并解析温度值</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5 制作小而美的计算器</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../aboutme.html">关于</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index-2.html">python3-small-examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index-2.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../chapters/p12_practice.html">十一、Python实战</a> &raquo;</li>
+        
+      <li>5 制作小而美的计算器</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/jackzhenguo/python-small-examples/blob/master/rst/ch12/05.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5 制作小而美的计算器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>ui设计</li>
+</ol>
+<p>使用<code class="docutils literal notranslate"><span class="pre">qt</span> <span class="pre">designer</span></code> ，按装anaconda后，在如下路径找到：</p>
+<blockquote>
+<div>conda3.05\Library\bin</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">designer.exe</span></code>文件，双击启动：</p>
+<div class="figure">
+<img alt="" src="../_images/1578811899182.png" />
+</div>
+<p>创建窗体，命名为<code class="docutils literal notranslate"><span class="pre">XiaoDing</span></code>，整个的界面如下所示：</p>
+<div class="figure">
+<img alt="" src="../_images/1578811933606.png" />
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">qt</span> <span class="pre">设计器</span></code>提供的常用控件基本都能满足开发需求，通过拖动左侧的控件，很便捷的就能搭建出如下的UI界面，比传统的手写控件代码要方便很多。</p>
+<p>最终设计的计算器<code class="docutils literal notranslate"><span class="pre">XiaoDing</span></code>界面如下，</p>
+<div class="figure">
+<img alt="" src="../_images/1578811959147.png" />
+</div>
+<p>比如，其中一个用于计算器显示的对象：<code class="docutils literal notranslate"><span class="pre">lcdNumber</span></code>，对象的类型为：<code class="docutils literal notranslate"><span class="pre">LCD</span> <span class="pre">Number</span></code>。右侧为计算器中用到的所有对象。</p>
+<div class="figure">
+<img alt="" src="../_images/1578811991539.png" />
+</div>
+<div class="figure">
+<img alt="" src="../_images/1578812033865.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>转py文件</li>
+</ol>
+<p>使用如下命令，将设计好的<code class="docutils literal notranslate"><span class="pre">ui</span></code>文件转为<code class="docutils literal notranslate"><span class="pre">py</span></code>文件：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyuic5</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">calculator</span><span class="o">/</span><span class="n">MainWindow</span><span class="o">.</span><span class="n">py</span> <span class="o">./</span><span class="n">calculator</span><span class="o">/</span><span class="n">mainwindow</span><span class="o">.</span><span class="n">ui</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>计算器实现逻辑</li>
+</ol>
+<p>导入库：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyQt5.QtGui</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtCore</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="kn">import</span> <span class="nn">operator</span>
+
+<span class="kn">from</span> <span class="nn">MainWindow</span> <span class="k">import</span> <span class="n">Ui_MainWindow</span>
+</pre></div>
+</div>
+<p>主题代码逻辑很精简：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculator state.</span>
+<span class="n">READY</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">INPUT</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">MainWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">,</span> <span class="n">Ui_MainWindow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MainWindow</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Setup numbers.</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;pushButton_n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="o">=</span><span class="n">n</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_number</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+        <span class="c1"># Setup operations.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_add</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">operation</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_sub</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">operation</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_mul</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">operation</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">mul</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_div</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">operation</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">truediv</span><span class="p">))</span>  <span class="c1"># operator.div for Python2.7</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_pc</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operation_pc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_eq</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">equals</span><span class="p">)</span>
+
+        <span class="c1"># Setup actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionReset</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_ac</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">actionExit</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_m</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_store</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton_mr</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_recall</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>基础方法：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">input_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">READY</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">INPUT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">v</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lcdNumber</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>按钮<code class="docutils literal notranslate"><span class="pre">RE</span></code>,<code class="docutils literal notranslate"><span class="pre">M</span></code>, <code class="docutils literal notranslate"><span class="pre">RE</span></code>对应的实现逻辑：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">READY</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">last_operation</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">current_op</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">memory_store</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lcdNumber</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">memory_recall</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">INPUT</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">+</span></code>,<code class="docutils literal notranslate"><span class="pre">-</span></code>,<code class="docutils literal notranslate"><span class="pre">x</span></code>,<code class="docutils literal notranslate"><span class="pre">/</span></code>,<code class="docutils literal notranslate"><span class="pre">/100</span></code>对应实现方法：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">operation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_op</span><span class="p">:</span>  <span class="c1"># Complete the current operation</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">equals</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">INPUT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_op</span> <span class="o">=</span> <span class="n">op</span>
+
+    <span class="k">def</span> <span class="nf">operation_pc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">INPUT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.01</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">=</span></code>号对应的方法实现：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">equals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">READY</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_operation</span><span class="p">:</span>
+           <span class="n">s</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_op</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_operation</span>
+           <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_op</span><span class="p">:</span>
+           <span class="bp">self</span><span class="o">.</span><span class="n">last_operation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_op</span>
+
+           <span class="k">try</span><span class="p">:</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_op</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">)]</span>
+           <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">lcdNumber</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="s1">&#39;Err&#39;</span><span class="p">)</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+           <span class="k">else</span><span class="p">:</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">current_op</span> <span class="o">=</span> <span class="kc">None</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">READY</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>main函数：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">([])</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">setApplicationName</span><span class="p">(</span><span class="s2">&quot;XiaoDing&quot;</span><span class="p">)</span>
+
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="" src="../_images/1578812059285.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../aboutme.html" class="btn btn-neutral float-right" title="关于" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="04.html" class="btn btn-neutral float-left" title="4 爬取天气数据并解析温度值" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Emily Guo
+      
+        <span class="commit">
+          Revision <code>a27be638</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+          <dd><a href="https://python-small-examples.readthedocs.io/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/python-small-examples/?fromdocs=python-small-examples">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/python-small-examples/?fromdocs=python-small-examples">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch12/05.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:41:17 GMT -->
+</html>

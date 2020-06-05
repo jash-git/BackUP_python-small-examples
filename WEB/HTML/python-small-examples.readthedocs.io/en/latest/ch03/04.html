@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch03/04.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:34 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>13 split分割单词 &mdash; python3-small-examples 1.2.378 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="18 常用元字符总结" href="05.html" />
+    <link rel="prev" title="9 ^匹配字符串的开头" href="03.html" /> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="04.html" />
+
+<link rel="stylesheet" href="../../../../assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "ch03/04"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index-2.html" class="icon icon-home"> python3-small-examples
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://python-small-examples.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p01_intro.html">Python之路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p02_basic.html">一、Python基础</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../chapters/p03_reandstr.html">二、Python字符串和正则</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01.html">1 反转字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.html#header-n1834">2 字符串切片操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.html#join">3 join串联字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.html#header-n1838">4 字符串的字节长度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html">5 查找第一个匹配串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html#header-n1845">6 查找所有1的索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html#d-0-9">7 \d 匹配数字[0-9]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html#header-n1850">8 匹配浮点数和整数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html">9 ^匹配字符串的开头</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html#re-i">10 re.I 忽略大小写</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html#compile">11 理解compile的作用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.html#header-n1860">12 使用()捕获单词，不想带空格</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13 split分割单词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#match">14 match从字符串开始位置匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#header-n1873">15 替换匹配的子串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#header-n1876">16 贪心捕获</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#header-n1879">17 非贪心捕获</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.html">18 常用元字符总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.html#header-n1885">19 常用通用字符总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.html">20 爬取百度首页标题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.html#camel">21 批量转化为驼峰格式(Camel)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.html#header-n1910">22 密码安全检查</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p04_file_datetime.html">三、Python文件和日期</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p05_threading.html">四、Python多线程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p06_3sharps.html">五、Python三大利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p07_plot.html">六、Python绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p08_keng.html">七、 Python之坑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p09_usefultools.html">八、 Python第三方包</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p10_basicalgAndMachineLearning.html">九、 机器学习和深度学必知算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p11_pandas_data_analysis.html">十、Pandas数据分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p12_practice.html">十一、Python实战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aboutme.html">关于</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index-2.html">python3-small-examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index-2.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../chapters/p03_reandstr.html">二、Python字符串和正则</a> &raquo;</li>
+        
+      <li>13 split分割单词</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/jackzhenguo/python-small-examples/blob/master/rst/ch03/04.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="split">
+<h1>13 split分割单词<a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h1>
+<p>使用以上方法分割单词不是简洁的，仅仅是为了演示。分割单词最简单还是使用<code class="docutils literal notranslate"><span class="pre">split</span></code>函数。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;This module provides regular expression matching operations similar to those found in Perl&#39;</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\s+&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1"># [&#39;This&#39;, &#39;module&#39;, &#39;provides&#39;, &#39;regular&#39;, &#39;expression&#39;, &#39;matching&#39;, &#39;operations&#39;, &#39;similar&#39;, &#39;to&#39;, &#39;those&#39;, &#39;found&#39;, &#39;in&#39;, &#39;Perl&#39;]</span>
+
+<span class="c1">### 上面这句话也可直接使用str自带的split函数：</span>
+<span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="c1">#使用空格分隔</span>
+
+<span class="c1">### 但是，对于风格符更加复杂的情况，split无能为力，只能使用正则</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;This,,,   module ; </span><span class="se">\t</span><span class="s1">   provides|| regular ; &#39;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;[,\s;|]+&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>  <span class="c1">#这样分隔出来，最后会有一个空字符串</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="match">
+<span id="header-n1868"></span><h1>14 match从字符串开始位置匹配<a class="headerlink" href="#match" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">注意<code class="docutils literal notranslate"><span class="pre">match</span></code>,<code class="docutils literal notranslate"><span class="pre">search</span></code>等的不同：</div>
+<div class="line">1) match函数</div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="c1">### match</span>
+<span class="n">mystr</span> <span class="o">=</span> <span class="s1">&#39;This&#39;</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">)</span>
+<span class="n">pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">mystr</span><span class="p">)</span> <span class="c1"># None</span>
+<span class="n">pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">mystr</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 从位置1处开始匹配</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">90</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;hi&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">2) search函数</div>
+<div class="line">search是从字符串的任意位置开始匹配</div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">91</span><span class="p">]:</span> <span class="n">mystr</span> <span class="o">=</span> <span class="s1">&#39;This&#39;</span>
+    <span class="o">...</span><span class="p">:</span> <span class="n">pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span> <span class="n">pat</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">mystr</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">91</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;hi&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n1873">
+<span id="id1"></span><h1>15 替换匹配的子串<a class="headerlink" href="#header-n1873" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">sub</span></code>函数实现对匹配子串的替换</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;hello 12345, hello 456321&quot;</span>
+<span class="n">pat</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">)</span> <span class="c1">#要替换的部分</span>
+<span class="n">m</span><span class="o">=</span><span class="n">pat</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;666&quot;</span><span class="p">,</span><span class="n">content</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="c1"># hello 666, hello 666</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n1876">
+<span id="id2"></span><h1>16 贪心捕获<a class="headerlink" href="#header-n1876" title="Permalink to this headline">¶</a></h1>
+<p>(.*)表示捕获任意多个字符，尽可能多的匹配字符</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">content</span><span class="o">=</span><span class="s1">&#39;&lt;h&gt;ddedadsad&lt;/h&gt;&lt;div&gt;graph&lt;/div&gt;bb&lt;div&gt;math&lt;/div&gt;cc&#39;</span>
+<span class="n">pat</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;div&gt;(.*)&lt;/div&gt;&quot;</span><span class="p">)</span>  <span class="c1">#贪婪模式</span>
+<span class="n">m</span><span class="o">=</span><span class="n">pat</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="c1">#匹配结果为： [&#39;graph&lt;/div&gt;bb&lt;div&gt;math&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n1879">
+<span id="id3"></span><h1>17 非贪心捕获<a class="headerlink" href="#header-n1879" title="Permalink to this headline">¶</a></h1>
+<p>仅添加一个问号(<code class="docutils literal notranslate"><span class="pre">?</span></code>)，得到结果完全不同，这是非贪心匹配，通过这个例子体会贪心和非贪心的匹配的不同。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">content</span><span class="o">=</span><span class="s1">&#39;&lt;h&gt;ddedadsad&lt;/h&gt;&lt;div&gt;graph&lt;/div&gt;bb&lt;div&gt;math&lt;/div&gt;cc&#39;</span>
+<span class="n">pat</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;div&gt;(.*?)&lt;/div&gt;&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">=</span><span class="n">pat</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="c1"># [&#39;graph&#39;, &#39;math&#39;]</span>
+</pre></div>
+</div>
+<p>非贪心捕获，见好就收。</p>
+<span class="target" id="header-n1883"></span></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="05.html" class="btn btn-neutral float-right" title="18 常用元字符总结" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="03.html" class="btn btn-neutral float-left" title="9 ^匹配字符串的开头" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Emily Guo
+      
+        <span class="commit">
+          Revision <code>a27be638</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+          <dd><a href="https://python-small-examples.readthedocs.io/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/python-small-examples/?fromdocs=python-small-examples">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/python-small-examples/?fromdocs=python-small-examples">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch03/04.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:34 GMT -->
+</html>

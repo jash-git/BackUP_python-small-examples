@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch03/03.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:34 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9 ^匹配字符串的开头 &mdash; python3-small-examples 1.2.378 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13 split分割单词" href="04.html" />
+    <link rel="prev" title="5 查找第一个匹配串" href="02.html" /> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="03.html" />
+
+<link rel="stylesheet" href="../../../../assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "ch03/03"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="../../../../assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index-2.html" class="icon icon-home"> python3-small-examples
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://python-small-examples.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p01_intro.html">Python之路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p02_basic.html">一、Python基础</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../chapters/p03_reandstr.html">二、Python字符串和正则</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01.html">1 反转字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.html#header-n1834">2 字符串切片操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.html#join">3 join串联字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.html#header-n1838">4 字符串的字节长度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html">5 查找第一个匹配串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html#header-n1845">6 查找所有1的索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html#d-0-9">7 \d 匹配数字[0-9]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.html#header-n1850">8 匹配浮点数和整数</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9 ^匹配字符串的开头</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#re-i">10 re.I 忽略大小写</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compile">11 理解compile的作用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#header-n1860">12 使用()捕获单词，不想带空格</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html">13 split分割单词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html#match">14 match从字符串开始位置匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html#header-n1873">15 替换匹配的子串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html#header-n1876">16 贪心捕获</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.html#header-n1879">17 非贪心捕获</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.html">18 常用元字符总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.html#header-n1885">19 常用通用字符总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.html">20 爬取百度首页标题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.html#camel">21 批量转化为驼峰格式(Camel)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.html#header-n1910">22 密码安全检查</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p04_file_datetime.html">三、Python文件和日期</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p05_threading.html">四、Python多线程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p06_3sharps.html">五、Python三大利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p07_plot.html">六、Python绘图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p08_keng.html">七、 Python之坑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p09_usefultools.html">八、 Python第三方包</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p10_basicalgAndMachineLearning.html">九、 机器学习和深度学必知算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p11_pandas_data_analysis.html">十、Pandas数据分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/p12_practice.html">十一、Python实战</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aboutme.html">关于</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index-2.html">python3-small-examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index-2.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../chapters/p03_reandstr.html">二、Python字符串和正则</a> &raquo;</li>
+        
+      <li>9 ^匹配字符串的开头</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/jackzhenguo/python-small-examples/blob/master/rst/ch03/03.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>9 ^匹配字符串的开头<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;This module provides regular expression matching operations similar to those found in Perl&#39;</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^[emrt]&#39;</span> <span class="c1"># 查找以字符e,m,r或t开始的字符串</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="c1"># [],因为字符串的开头是字符`T`，不在emrt匹配范围内，所以返回为空</span>
+<span class="n">IN</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">s2</span> <span class="o">=</span> <span class="s1">&#39;email for me is <a href="https://python-small-examples.readthedocs.io/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="583f2d3722303d3636313936302d3918696e6b763b3735">[email&#160;protected]</a>&#39;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;^[emrt].*&#39;</span><span class="p">,</span><span class="n">s2</span><span class="p">)</span><span class="c1"># 匹配以e,m,r,t开始的字符串，后面是多个任意字符</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;email for me is <a href="https://python-small-examples.readthedocs.io/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfd8cad0c5d7dad1d1d6ded1d7cadeff8e898c91dcd0d2">[email&#160;protected]</a>&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="re-i">
+<span id="header-n1855"></span><h1>10 re.I 忽略大小写<a class="headerlink" href="#re-i" title="Permalink to this headline">¶</a></h1>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;That&#39;</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;t&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">r</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile">
+<span id="header-n1857"></span><h1>11 理解compile的作用<a class="headerlink" href="#compile" title="Permalink to this headline">¶</a></h1>
+<p>如果要做很多次匹配，可以先编译匹配串：</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\W+&#39;</span><span class="p">)</span> <span class="c1"># \W 匹配不是数字和字母的字符</span>
+<span class="n">has_special_chars</span> <span class="o">=</span> <span class="n">pat</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ed#<a href="https://python-small-examples.readthedocs.io/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9eb99bcbdba">[email&#160;protected]</a>&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">has_special_chars</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;str contains special characters:{has_special_chars.group(0)}&#39;</span><span class="p">)</span>
+
+<span class="c1">###输出结果:</span>
+ <span class="c1"># str contains special characters:#</span>
+
+<span class="c1">### 再次使用pat正则编译对象 做匹配</span>
+<span class="n">again_pattern</span> <span class="o">=</span> <span class="n">pat</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;<a href="https://python-small-examples.readthedocs.io/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="274052485d4f4249494e46494f5246671611140944484a">[email&#160;protected]</a>&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="s1">&#39;@&#39;</span> <span class="ow">in</span> <span class="n">again_pattern</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;possibly it is an email&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n1860">
+<span id="id2"></span><h1>12 使用()捕获单词，不想带空格<a class="headerlink" href="#header-n1860" title="Permalink to this headline">¶</a></h1>
+<p>使用<code class="docutils literal notranslate"><span class="pre">()</span></code>捕获</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;This module provides regular expression matching operations similar to those found in Perl&#39;</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\s([a-zA-Z]+)&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1">#[&#39;module&#39;, &#39;provides&#39;, &#39;regular&#39;, &#39;expression&#39;, &#39;matching&#39;, &#39;operations&#39;, &#39;similar&#39;, &#39;to&#39;, &#39;those&#39;, &#39;found&#39;, &#39;in&#39;, &#39;Perl&#39;]</span>
+</pre></div>
+</div>
+<p>看到提取单词中未包括第一个单词，使用<code class="docutils literal notranslate"><span class="pre">?</span></code>表示前面字符出现0次或1次，但是此字符还有表示贪心或非贪心匹配含义，使用时要谨慎。</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;This module provides regular expression matching operations similar to those found in Perl&#39;</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\s?([a-zA-Z]+)&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1">#[&#39;This&#39;, &#39;module&#39;, &#39;provides&#39;, &#39;regular&#39;, &#39;expression&#39;, &#39;matching&#39;, &#39;operations&#39;, &#39;similar&#39;, &#39;to&#39;, &#39;those&#39;, &#39;found&#39;, &#39;in&#39;, &#39;Perl&#39;]</span>
+</pre></div>
+</div>
+<span class="target" id="header-n1865"></span></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="04.html" class="btn btn-neutral float-right" title="13 split分割单词" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02.html" class="btn btn-neutral float-left" title="5 查找第一个匹配串" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Emily Guo
+      
+        <span class="commit">
+          Revision <code>a27be638</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+          <dd><a href="https://python-small-examples.readthedocs.io/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+          <dd><a href="http://python-small-examples.readthedocs.io/_/downloads/en/latest/epub/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/python-small-examples/?fromdocs=python-small-examples">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/python-small-examples/?fromdocs=python-small-examples">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+
+<!-- Mirrored from python-small-examples.readthedocs.io/en/latest/ch03/03.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 01:39:34 GMT -->
+</html>
